@@ -290,3 +290,28 @@
 </ul>
 
 </aside><!-- End Sidebar-->
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  var signOutLink = document.getElementById('logout-link');
+
+// Add a click event listener to the logout link
+signOutLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+   
+    // Use replaceState to replace the current history entry with the login page
+    history.replaceState(null, null, '/login'); // Replace 'login.html' with your actual login page URL
+
+    // Redirect the user to the logout page with the user ID as a query parameter
+    window.location.href = `/login`; // Replace '/logout' with your actual logout route
+});
+
+// Listen for the 'popstate' event to handle back/forward button clicks
+window.addEventListener('popstate', function(event) {
+    // Redirect the user back to the login page
+    window.location.href = '/login'; // Replace 'login.html' with your actual login page URL
+});
+});
+
+</script>

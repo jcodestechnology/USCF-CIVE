@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Program; // Make sure to import the Program model
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Management;
+use App\Models\Event;
 
 class RegistrationController extends Controller
 {
@@ -54,7 +56,8 @@ class RegistrationController extends Controller
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
         $user->user_role = $request->input('user_role');
-        $user->program_id = $request->input('program_id');
+        $programName = Program::find($user->program_id)->name;
+        $user->program_name = $programName;
         $user->password = Hash::make($request->input('password')); // Hash the password
         $user->profile = $request->input('profile');
         $user->year_started = $request->input('year_started');
@@ -71,11 +74,120 @@ class RegistrationController extends Controller
     }
 
     public function getAllUsers()
+    {
+        $users = User::all();
+         // Get the current month and year
+    $currentMonth = date('m');
+    $currentYear = date('Y');
+    
+    // Calculate the academic year based on the current date (November to November)
+    if ($currentMonth < 11) {
+        $academicYear = ($currentYear - 1) . '/' . $currentYear;
+    } else {
+        $academicYear = $currentYear . '/' . ($currentYear + 1);
+    }
+    
+    // Iterate through each user to calculate the years enrolled
+    foreach ($users as $user) {
+        // Calculate the number of years enrolled based on the starting year and the current year
+        $yearStarted = $user->year_started;
+        
+        // If the current month is before November, reduce the current year by 1
+        if ($currentMonth < 11) {
+            $currentYear--;
+        }
+        
+        // Calculate the number of years enrolled from November to November
+        $yearsEnrolled = $currentYear - $yearStarted;
+
+        // If the current month is November or later, increment yearsEnrolled by 1
+        if ($currentMonth >= 11) {
+            $yearsEnrolled++;
+        }
+
+        // Format the years enrolled (e.g., 2020/2021)
+        $yearEnrolledFormat = $yearStarted . '/' . ($yearStarted + 1);
+        
+        // Assign the calculated values to the user object
+        $user->years_enrolled = $yearsEnrolled;
+        $user->year_enrolled_format = $yearEnrolledFormat;
+        
+        // Assign the academic year to each user
+        $user->academic_year = $academicYear;
+    }
+        
+        // Return the view with the users data
+        return view('wahumini')->with('users', $users);
+        
+    }
+    public function create()
+    {
+        return view('members.create');
+    }
+
+    public function storeM(Request $request)
+    {
+        $request->validate([
+            'full_name' => 'required|string',
+            'position' => 'required|string',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'facebook' => 'nullable|string',
+            'instagram' => 'nullable|string',
+        ]);
+    
+        $imageName = time() . '.' . $request->picture->extension();
+        $request->picture->move(public_path('images'), $imageName);
+    
+        $imagePath = 'images/' . $imageName;
+    
+        $member = new Management();
+        $member->full_name = $request->full_name;
+        $member->position = $request->position;
+        $member->picture = $imagePath; // Store the image path in the database
+        $member->facebook = $request->facebook;
+        $member->instagram = $request->instagram;
+    
+        $member->save();
+    
+        return redirect()->back()->with('success', 'Member created successfully');
+    }
+   
+    public function getAllMembers()
 {
-    $users = User::all();
-    
-    // Return the users to a view or process them as needed
-    return view('users', ['users' => $users]); // Assuming you want to pass the users to a view called 'users.index'
+    $members = Management::all();
+
+    return view('leaders', compact('members'));
 }
+
+public function createEvent()
+    {
+        return view('events');
+    }
+
+    public function storeEvent(Request $request)
+    {
+        $request->validate([
+            'event_name' => 'required|string',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'description' => 'required|string',
+        ]);
+
+        $imageName = time() . '.' . $request->picture->extension();
+        $request->picture->move(public_path('images'), $imageName);
+
+        $event = new Event();
+        $event->event_name = $request->event_name;
+        $event->picture = $imageName;
+        $event->description = $request->description;
+        $event->save();
+
+        return redirect()->back()->with('success', 'Event created successfully');
+    }
+    public function getEvents()
+    {
+        // Retrieve all events
+        $events = Event::all();
     
+        return view('view_events', compact('events'));
+    }
 }

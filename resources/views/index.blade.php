@@ -6,7 +6,7 @@
       <!-- <h1>Welcome to USCF-CIVE</h1> -->
       <br><br><br><br><br><br>
      <br><br>
-      <a href="#about" class="btn-get-started scrollto" style="background: #FFFFFF; color: #086808;">Get Started</a>
+      <a href="login" class="btn-get-started scrollto" style="background: #FFFFFF; color: #086808;">Get Started</a>
     </div>
   </section><!-- End Hero -->
 
@@ -25,7 +25,7 @@
               </p>
               
               <div class="text-center">
-                <a href="#" class="more-btn" style="background: #B0C8B0;color: #000000;">Learn More <i class="bx bx-chevron-right"></i></a>
+                <a href="about" class="more-btn" style="background: #B0C8B0;color: #000000;">Learn More <i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -100,52 +100,7 @@
       </div>
     </section><!-- End About Section -->
 
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="fas fa-users"></i>
-              <span data-purecounter-start="0" data-purecounter-end="324" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Ours Members</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="fas fa-microphone"></i>
-
-              <span data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Choirs & Team singers</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="fas fa-chess-king"></i>
-
-              <span data-purecounter-start="0" data-purecounter-end="25" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Leaders</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="fas fa-building"></i>
-
-              <span data-purecounter-start="0" data-purecounter-end="10" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Departments</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-
+  
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
       <div class="container">
@@ -417,117 +372,40 @@
       </div>
     </section><!-- End Departments Section -->
 
-    <!-- ======= Viongozi Section ======= -->
-    <section id="doctors" class="doctors">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Our Leaders</h2>
-          <p>Our church leaders guide us with wisdom and devotion, fulfilling our spiritual needs. They inspire us to walk the path of faith with compassion and dedication, fostering unity and growth within our community.</p>
-        </div>
-
-        <div class="row">
-
-          <!-- <div class="col-lg-6">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-1.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4 mt-lg-0">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-2.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-3.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mt-4">
-            <div class="member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/doctors/doctors-4.jpg" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                <div class="social">
-                  <a href=""><i class="ri-twitter-fill"></i></a>
-                  <a href=""><i class="ri-facebook-fill"></i></a>
-                  <a href=""><i class="ri-instagram-fill"></i></a>
-                  <a href=""> <i class="ri-linkedin-box-fill"></i> </a>
-                </div>
-              </div>
-            </div>
-          </div> -->
-
-        </div>
-
-      </div>
-    </section><!-- End Doctors Section -->
 
     <!-- ======= Frequently Asked Questions Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container">
-
+    - <section id="faq" class="faq section-bg">
+    <div class="container">
         <div class="section-title">
-          <h2>Verse of the Week</h2>
-          <p>The "Verse of the Week" enlightens, guides, and inspires our spiritual journey. It's a beacon of truth and wisdom, nurturing our souls with divine messages.</p>
+            <h2>Verse of the Week</h2>
+            <p>The "Verse of the Week" enlightens, guides, and inspires our spiritual journey. It's a beacon of truth and wisdom, nurturing our souls with divine messages.</p>
         </div>
 
         <div class="faq-list">
-          <ul>
-            <li data-aos="fade-up">
-              <i class="bx bx-bible icon-bible"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">Simple word posted <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
-                <p>
-                 bible verse.
-                </p>
-              </div>
-            </li>
-
-            
-
-          </ul>
+            <ul>
+                @foreach($allNenoLaWeek as $verse)
+                <li data-aos="fade-up">
+                    <i class="bx bx-bible icon-bible"></i>
+                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-{{$verse->id}}">
+                        {{$verse->kichwa}} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                    </a>
+                    <div id="faq-list-{{$verse->id}}" class="collapse show" data-bs-parent=".faq-list">
+                        <p>
+                            {{$verse->kifungu}}
+                        </p>
+                        <p>
+                        {!! strip_tags($verse->maelezo) !!}
+                        </p>
+                        <p>Date posted: {{$verse->created_at}}</p>
+                    </div>
+                </li>
+                @endforeach
+            </ul>
         </div>
+    </div>
+</section>
 
-      </div>
-    </section><!-- End Frequently Asked Questions Section -->
+<!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Different word of God ======= -->
     <!-- <section id="testimonials" class="testimonials">
@@ -619,159 +497,10 @@
     </section>End Testimonials Section --> 
 
     <!-- ======= Gallery Section ======= -->
-    <section id="gallery" class="gallery">
-      <div class="container">
+  <!-- End Gallery Section -->
+<!-- End Gallery Section -->
 
-        <div class="section-title">
-          <h2>Church Services Images</h2>
-          <p>Capturing the essence of our church services through captivating imagery.</p>
-        </div>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row g-0">
-
-          <!-- <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-1.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-1.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-2.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-2.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-3.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-3.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-4.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-4.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-5.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-5.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-6.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-6.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-7.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-7.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="gallery-item">
-              <a href="assets/img/gallery/gallery-8.jpg" class="galelry-lightbox">
-                <img src="assets/img/gallery/gallery-8.jpg" alt="" class="img-fluid">
-              </a>
-            </div>
-          </div> -->
-
-        </div>
-
-      </div>
-    </section><!-- End Gallery Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Connecting with us is easy. Reach out for any inquiries.</p>
-        </div>
-      </div>
-
-      <div>
-        <iframe style="border:0; width: 100%; height: 350px;"  src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d3966.3567677220635!2d35.81177777365904!3d-6.216593810886248!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x184dfb7d1bdf5485%3A0x49b653824a70bd16!2sCIVE%20Student%20Hostel%20block%201%2C%20Dodoma!3m2!1d-6.2158356!2d35.8135532!5e0!3m2!1sen!2stz!4v1710421234250!5m2!1sen!2stz"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0" allowfullscreen></iframe>
-      </div>
-
-      <div class="container">
-        <div class="row mt-5">
-
-          <div class="col-lg-4">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>Informatics, UDOM, DODOMA</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@uscf-cive.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+255 717 227 018</p>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
+ 
 
   </main><!-- End #main -->
 

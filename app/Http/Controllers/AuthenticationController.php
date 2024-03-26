@@ -34,4 +34,13 @@ class AuthenticationController extends Controller
             return back()->with('error', 'Invalid credentials. Please try again.');
         }
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout(); // Logout the user from the 'web' guard
+        session()->invalidate(); // Invalidate the current session
+        session()->regenerateToken(); // Regenerate the CSRF token
+
+        return redirect()->route('login'); // Redirect to home or any other route after logout
+    }
 }
