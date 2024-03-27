@@ -7,6 +7,7 @@ use App\Models\NenoLaWeek;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Post;
+use App\Models\Maoni;
 
 class NenoLaWeekController extends Controller
 {
@@ -120,4 +121,29 @@ public function getPictures()
 
     return view('ibada', compact('pictures'));
 }
+
+public function storeMaoni(Request $request)
+    {
+        $request->validate([
+            'maelezo' => 'required|string',
+        ]);
+
+        Maoni::create([
+            'maelezo' => $request->maelezo,
+        ]);
+
+        return redirect()->back()->with('success', 'Maoni yako yametumwa kikamilifu!');
+    }
+    public function index()
+    {
+        $maoni = Maoni::all();
+        return view('view_maoni', compact('maoni'));
+    }
+    public function destroy($id)
+    {
+        $maoni = Maoni::findOrFail($id);
+        $maoni->delete();
+        
+        return redirect()->back()->with('success', 'Maoni deleted successfully.');
+    }
 }

@@ -56,8 +56,7 @@ class RegistrationController extends Controller
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
         $user->user_role = $request->input('user_role');
-        $programName = Program::find($user->program_id)->name;
-        $user->program_name = $programName;
+        $user->program_id = $request->input('program_id');
         $user->password = Hash::make($request->input('password')); // Hash the password
         $user->profile = $request->input('profile');
         $user->year_started = $request->input('year_started');

@@ -63,4 +63,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Program::class);
     }
+    public function ahadis()
+    {
+        return $this->hasMany(Ahadi::class);
+    }
 }
