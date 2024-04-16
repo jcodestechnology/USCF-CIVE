@@ -67,4 +67,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ahadi::class);
     }
+
+    public function families()
+{
+    return $this->belongsToMany(Family::class, 'family_user');
+}
+public function family()
+{
+    return $this->hasOne(Family::class, 'id');
+}
+
+public function readPosts()
+{
+    return $this->belongsToMany(Matangazo::class, 'read_posts');
+}
+
 }

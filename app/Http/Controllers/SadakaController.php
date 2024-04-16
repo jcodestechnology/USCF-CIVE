@@ -7,8 +7,12 @@ use App\Models\Sadaka;
 use App\Models\Ahadi;
 use App\Models\User;
 use App\Models\AhadiKapu;
+use App\Models\Expense;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; // Import DB facade
+use PDF;
+use Carbon\Carbon;
+
 class SadakaController extends Controller
 {
     public function store(Request $request)
@@ -20,8 +24,11 @@ class SadakaController extends Controller
             'mnada' => 'nullable|string',
             'shukrani_ya_pekee' => 'nullable|string',
             'changizo' => 'nullable|string',
+            'sadaka_madhabahu' => 'nullable|string',
+            'katikati_week' => 'nullable|string',
         ]);
 
+      
         $sadaka = new Sadaka();
         $sadaka->date = $validatedData['date'];
         $sadaka->sadaka_jumapili = $validatedData['sadaka_jumapili'];
@@ -29,6 +36,8 @@ class SadakaController extends Controller
         $sadaka->mnada = $validatedData['mnada'];
         $sadaka->shukrani_ya_pekee = $validatedData['shukrani_ya_pekee'];
         $sadaka->changizo = $validatedData['changizo'];
+        $sadaka->sadaka_madhabahu = $validatedData['sadaka_madhabahu'];
+        $sadaka->katikati_week = $validatedData['katikati_week'];
         $sadaka->save();
 
         return redirect()->back()->with('success', 'Sadaka added successfully.');
@@ -95,6 +104,8 @@ return view('view_ahadi_zote', ['users' => $usersWithAhadi]);
         $validatedData = $request->validate([
             'mhumini' => 'required',
             'kiasi_alichotoa' => 'required|numeric',
+           
+            'tarehe_ya_jumapili' =>'required|date',
         ]);
     
         // Find the Ahadi record for the selected user
@@ -106,6 +117,7 @@ return view('view_ahadi_zote', ['users' => $usersWithAhadi]);
             $newAmount = $validatedData['kiasi_alichotoa'];
             $totalAmount = $existingAmount + $newAmount;
             $ahadi->kiasi_alichotoa = $totalAmount;
+            $ahadi->tarehe_ya_jumapili =$validatedData['tarehe_ya_jumapili'];
             $ahadi->save();
         }
     
@@ -143,11 +155,67 @@ return view('view_ahadi_zote', ['users' => $usersWithAhadi]);
 {
     $validatedData = $request->validate([
         'kiasi_alichotoa' => 'required|string', // Validate the input
+        'tarehe_ya_jumapili'=>'required|date',
     ]);
 
     AhadiKapu::create($validatedData);
 
     return redirect()->back()->with('success', 'Sadaka imejazwa kikamilifu.');
 }
+
+public function matumizi(Request $request)
+    {
+        $request->validate([
+            'expense_date' => 'required|date',
+            'amount' => 'required|numeric',
+            'description' => 'nullable|string',
+        ]);
+
+        Expense::create($request->all());
+
+        return redirect()->back()->with('success', 'Matumizi yamenakiliwa kikamilifu.');
+    }
+
+    public function generateReport(Request $request)
+    {
+        $reportType = $request->input('report_type');
+        $startDate = $request->input('start_date');
+        $endDate = $request->input('end_date');
+    
+        if ($reportType === 'income') {
+            // Generate income report
+            // Retrieve income (sadaka) records for the specified date range
+            $income = Sadaka::whereBetween('date', [$startDate, $endDate])->get();
+            // Calculate total income
+            $totalIncome = $income->sum('sadaka_jumapili') + $income->sum('kumtunza_mchungaji') + $income->sum('mnada') + $income->sum('shukrani_ya_pekee') + $income->sum('changizo') + $income->sum('sadaka_madhabahu') + $income->sum('katikati_week');
+            // Generate PDF for income report
+            $pdf = PDF::loadView('pdf.income_report', compact('income', 'startDate', 'endDate', 'totalIncome'));
+        } elseif ($reportType === 'expenses') {
+            // Generate expenses report
+            // Retrieve expenses records for the specified date range
+            $expenses = Expense::whereBetween('expense_date', [$startDate, $endDate])->get();
+            // Calculate total expenses
+            $totalExpenses = $expenses->sum('amount');
+            // Generate PDF for expenses report
+            $pdf = PDF::loadView('pdf.expenses_report', compact('expenses', 'startDate', 'endDate', 'totalExpenses'));
+        } elseif ($reportType === 'income_expenses') {
+            // Generate combined income and expenses report
+            // Retrieve income and expenses records for the specified date range
+            $income = Sadaka::whereBetween('date', [$startDate, $endDate])->get();
+            $expenses = Expense::whereBetween('expense_date', [$startDate, $endDate])->get();
+            // Calculate total income and total expenses
+            $totalIncome = $income->sum('sadaka_jumapili') + $income->sum('kumtunza_mchungaji') + $income->sum('mnada') + $income->sum('shukrani_ya_pekee') + $income->sum('changizo') + $income->sum('sadaka_madhabahu') + $income->sum('katikati_week');
+            $totalExpenses = $expenses->sum('amount');
+            // Generate PDF for combined report
+            $pdf = PDF::loadView('pdf.combined_report', compact('income', 'expenses', 'startDate', 'endDate', 'totalIncome', 'totalExpenses'));
+        } else {
+            // Invalid report type
+            return response()->json(['error' => 'Invalid report type'], 400);
+        }
+    
+        // Return the PDF response
+        return $pdf->stream('report.pdf');
+    }
+    
     
 }

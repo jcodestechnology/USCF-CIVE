@@ -13,5 +13,6 @@ class AhadiKapu extends Model
    protected $table='ahadi_kapus';
     protected $fillable = [
         'kiasi_alichotoa',
+        'tarehe_ya_jumapili',
     ];
 }

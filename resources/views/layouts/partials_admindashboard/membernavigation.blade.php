@@ -233,7 +233,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
 
   <li class="nav-item">
-    <a class="nav-link " href="index.html">
+    <a class="nav-link " href="dashboard">
       <i class="bi bi-grid"></i>
       <span>Dashboard</span>
     </a>
@@ -245,12 +245,12 @@
     </a>
     <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="components-alerts.html">
+        <a href="ahadi_mhumini">
           <i class="bi bi-circle"></i><span>Kuweka Ahadi</span>
         </a>
       </li>
       <li>
-        <a href="components-accordion.html">
+        <a href="view_my_ahadi">
           <i class="bi bi-circle"></i><span>Kutazama Matoleo</span>
         </a>
       </li>
@@ -265,7 +265,7 @@
     </a>
     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
-        <a href="forms-elements.html">
+        <a href="maoni">
         <i class="bi bi-chat-left-text"></i><span>Andika Maoni</span>
         </a>
       </li>
@@ -274,18 +274,23 @@
     </ul>
   </li><!-- End Forms Nav -->
   <li class="nav-item">
-    <a class="nav-link " href="index.html">
+    <a class="nav-link " href="almanaki_user">
     <i class="bi bi-calendar"></i>
       <span>Almanaki ya Kanisa</span>
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="index.html">
+    <a class="nav-link " href="news">
     <i class="bi bi-megaphone"></i>
       <span>Matangazo ya Kanisa</span>
     </a>
   </li>
-  
+  <li class="nav-item">
+    <a class="nav-link " href="my_family">
+    <i class="bi bi-megaphone"></i>
+      <span>Familia yangu</span>
+    </a>
+  </li>
 
 </ul>
 

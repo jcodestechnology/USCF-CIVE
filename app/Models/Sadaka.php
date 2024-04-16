@@ -16,5 +16,10 @@ class Sadaka extends Model
         'mnada',
         'shukrani_ya_pekee',
         'changizo',
+        'sadaka_madhabahu',
+        'katikati_week',
+     
+
+       
     ];
 }

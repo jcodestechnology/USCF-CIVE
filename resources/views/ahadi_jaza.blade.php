@@ -54,6 +54,10 @@
         <label for="kiasi_alichotoa" class="form-label">Kiasi Alichotoa</label>
         <input type="text" id="kiasi_alichotoa" name="kiasi_alichotoa" class="form-control" required>
     </div>
+    <div class="col-md-12">
+        <label for="tarehe_ya_jumapili" class="form-label">Tarehe ya Jumapili</label>
+        <input type="text" id="tarehe_ya_jumapili"  class="form-control" name="tarehe_ya_jumapili" value="{{ \Carbon\Carbon::now()->startOfWeek()->subDays(1)->format('Y-m-d') }}"  readonly>
+    </div>
 
     <!-- Additional Fields (optional) -->
     <!-- Include additional fields as needed -->

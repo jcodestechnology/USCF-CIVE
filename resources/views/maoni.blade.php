@@ -24,7 +24,7 @@
         {{ session('error') }}
     </div>
 @endif
-              <h5 class="card-title">Sehemu ya Maoni binafisi kuhusu kanisa</h5>
+              <h5 class="card-title">Sehemu ya Maoni binafsi kuhusu kanisa</h5>
 
 <!-- No Labels Form -->
 <form class="row g-3" action="{{ route('store.maoni') }}" method="post">

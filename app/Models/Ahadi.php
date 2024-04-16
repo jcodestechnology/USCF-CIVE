@@ -14,6 +14,7 @@ class Ahadi extends Model
         'ahadi_yangu',
         'kiasi_alichotoa',
         'year',
+        'tarehe_ya_jumapili',
     ];
 
     public function user()

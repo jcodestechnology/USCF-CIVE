@@ -6,8 +6,8 @@
         <h1>Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">Home</a></li>
-                <li class="breadcrumb-item active">Sadaka ya Ahadi</li>
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">Post News</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -24,31 +24,30 @@
                     {{ session('error') }}
                 </div>
                 @endif
-                <h5 class="card-title">Sadaka ya Ahadi za kwenye Kapu</h5>
+                <h5 class="card-title">Post News</h5>
 
-                <!-- Modified Form with Single Field -->
-                <form class="row g-3" action="{{ route('store.ahadiKapu') }}" method="post">
+                <!-- Form for posting news -->
+                <form class="row g-3" action="{{ route('post.news') }}" method="post">
                     @csrf
                     <div class="col-md-12">
-                        <label for="tarehe_ya_jumapili" class="form-label">Tarehe ya Jumapili</label>
-                        <input type="text" id="tarehe_ya_jumapili" name="tarehe_ya_jumapili" class="form-control" value="{{ \Carbon\Carbon::now()->startOfWeek()->subDays(1)->format('Y-m-d') }}"  readonly>
-                    </div>
-                    <!-- Field for kiasi alichotoa (amount donated) -->
-                    <div class="col-md-12">
-                        <label for="kiasi_alichotoa" class="form-label">Kiasi kilichotolewa</label>
-                        <input type="text" id="kiasi_alichotoa" name="kiasi_alichotoa" class="form-control" required>
+                        <label for="headline" class="form-label">Headline</label>
+                        <input type="text" id="headline" name="headline" class="form-control" placeholder="Headline">
                     </div>
 
-                    <!-- Additional Fields (optional) -->
-                    <!-- Include additional fields as needed -->
+                    <div class="col-md-12">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea id="content" name="content" class="tinymce-editor form-control" rows="3" placeholder="Content"></textarea>
+                    </div>
 
                     <div class="text-center">
                         <button type="submit" class="btn" style="background:#086808; color:#FFFFFF">Submit</button>
                     </div>
-                </form><!-- End Modified Form -->
+                </form><!-- End Form for posting news -->
+
             </div>
         </div>
     </section>
 
 </main><!-- End #main -->
+
 @endsection

@@ -64,6 +64,15 @@
         <label for="changizo" class="form-label">Changizo</label>
         <input type="text" id="changizo" name="changizo" class="form-control">
     </div>
+    
+    <div class="col-md-12">
+        <label for="sadaka_madhabahu" class="form-label">Sadaka ya Madhabahuni</label>
+        <input type="text" id="sadaka_madhabahu" name="sadaka_madhabahu" class="form-control">
+    </div>
+    <div class="col-md-12">
+        <label for="katikati_week" class="form-label">Sadaka ya katikati ya wiki</label>
+        <input type="text" id="katikati_week" name="katikati_week" class="form-control">
+    </div>
   
     <div class="text-center">
         <button type="submit" class="btn" style="background:#086808; color:#FFFFFF">Submit</button>
