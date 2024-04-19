@@ -11,8 +11,8 @@
               College of Informatics <br>
               UDOM, DODOMA<br>
              TANZANIA <br><br>
-              <strong>Phone:</strong> +255 717 227 018<br>
-              <strong>Email:</strong> info@uscf-cive.com<br>
+              <strong>Phone:</strong> +255 756 405 762<br>
+              <strong>Email:</strong> info@uscfcive-udom.com<br>
             </p>
           </div>
 
@@ -20,10 +20,10 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Our Leaders</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Events</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="leader">Our Leaders</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="view_events">Events</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="contact">Contact</a></li>
             </ul>
           </div>
 
@@ -57,15 +57,15 @@
         </div>
         <div class="credits">
       
-          Designed & Developed by <a href="">Jcodes Technologies</a>
+          Designed & Developed by <a href="https://jcodestechnologies.com/">Jcodes Technologies</a>
         </div>
       </div>
       <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+        <!-- <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a> -->
+        <a href="https://www.instagram.com/official_cctuscf_udomcive/" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <!-- <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a> -->
       </div>
     </div>
   </footer><!-- End Footer -->

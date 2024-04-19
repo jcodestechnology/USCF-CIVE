@@ -2,14 +2,14 @@
  <div id="topbar" class="d-flex align-items-center fixed-top">
     <div class="container d-flex justify-content-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope"></i> <a href="mailto:contact@example.com">info@uscf-cive.com</a>
-        <i class="bi bi-phone"></i> +255 717 227 018 
+        <i class="bi bi-envelope"></i> <a href="info@uscfcive-udom.com">info@uscfcive-udom.com</a>
+        <i class="bi bi-phone"></i> +255 756 405 762 
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+        <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a> -->
+        <a href="https://www.instagram.com/official_cctuscf_udomcive/" class="instagram"><i class="bi bi-instagram"></i></a>
+        <!-- <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a> -->
       </div>
     </div>
   </div>

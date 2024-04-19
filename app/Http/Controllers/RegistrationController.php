@@ -40,21 +40,34 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
+        // Validate request data
         $request->validate([
             'firstname' => 'required|string|max:255',
             'middlename' => 'nullable|string|max:255',
             'lastname' => 'required|string|max:255',
             'phone' => 'required|numeric|digits:12|unique:users,phone',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email',
             'user_role' => 'required|string|max:255',
             'program_id' => 'required|exists:programs,id',
             'password' => 'required|string',
             'profile' => 'nullable|string',
             'year_started' => 'required',
             'year_completion' => 'required',
-            'gender' => 'required', // Assuming only 'male' and 'female' are allowed
+            'gender' => 'required|in:male,female',
             'block' => 'required|numeric',
         ]);
+    
+        // Check if the user with the provided email already exists
+        $existingEmailUser = User::where('email', $request->input('email'))->first();
+        if ($existingEmailUser) {
+            return back()->with('error', 'User with this email already exists.');
+        }
+    
+        // Check if the user with the provided phone number already exists
+        $existingPhoneUser = User::where('phone', $request->input('phone'))->first();
+        if ($existingPhoneUser) {
+            return back()->with('error', 'User with this phone number already exists.');
+        }
     
         // Create a new instance of the User model
         $user = new User();
@@ -79,6 +92,8 @@ class RegistrationController extends Controller
             return back()->with('error', 'Failed to create user.');
         }
     }
+    
+    
 
     public function retrieveInactiveUsers()
 {
@@ -186,30 +201,29 @@ public function downloadPDF()
     return view('leaders', compact('members'));
 }
 
-public function createEvent()
-    {
-        return view('events');
-    }
+public function storeEvent(Request $request)
+{
+    $request->validate([
+        'event_name' => 'required|string',
+        'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'description' => 'required|string',
+    ]);
 
-    public function storeEvent(Request $request)
-    {
-        $request->validate([
-            'event_name' => 'required|string',
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'description' => 'required|string',
-        ]);
+    $imageName = time() . '.' . $request->picture->extension();
+    $request->picture->move(public_path('images'), $imageName);
 
-        $imageName = time() . '.' . $request->picture->extension();
-        $request->picture->move(public_path('images'), $imageName);
+    $imagePath = 'images/' . $imageName; // Store the image path in a variable
 
-        $event = new Event();
-        $event->event_name = $request->event_name;
-        $event->picture = $imageName;
-        $event->description = $request->description;
-        $event->save();
+    $event = new Event();
+    $event->event_name = $request->event_name;
+    $event->picture = $imagePath; // Store the image path in the database
+    $event->description = $request->description;
+    $event->save();
 
-        return redirect()->back()->with('success', 'Event created successfully');
-    }
+    return redirect()->back()->with('success', 'Event created successfully');
+}
+
+    
     public function getEvents()
     {
         // Retrieve all events
@@ -283,19 +297,30 @@ public function createEvent()
     }
     
     public function myFamily()
-{
-    // Retrieve the authenticated user
-    $user = Auth::user();
-
-    // Retrieve the authenticated user's family information
-    $family = $user->families()->with(['father', 'mother', 'members'])->first();
-
-    // Pass the family information to the view along with a flag indicating if the user has a family
-    return view('my_family', [
-        'family' => $family,
-        'hasFamily' => $family !== null
-    ]);
-}
+    {
+        // Retrieve the authenticated user
+        $user = Auth::user();
+    
+        // Retrieve the authenticated user's family information
+        $family = $user->families()->with(['father', 'mother', 'members'])->first();
+    
+        // Check if the user has family information
+        if ($family !== null) {
+            // Pass the family information to the view along with a flag indicating if the user has a family
+            return view('my_family', [
+                'family' => $family,
+                'hasFamily' => true
+            ]);
+        } else {
+            // If the user has no family, display a message
+            $message = "You don't have any family information.";
+            return view('my_family', [
+                'message' => $message,
+                'hasFamily' => false
+            ]);
+        }
+    }
+    
     
 public function addMember(Request $request)
 {

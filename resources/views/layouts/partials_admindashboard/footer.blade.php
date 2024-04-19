@@ -4,7 +4,7 @@
       &copy; Copyright <strong><span>USCF CIVE</span></strong>. All Rights Reserved
     </div>
     <div class="credits">
-   Designed and Developed by <a href="">Jcodes Technologies</a>
+   Designed and Developed by <a href="https://jcodestechnologies.com/">Jcodes Technologies</a>
     </div>
   </footer><!-- End Footer -->
 

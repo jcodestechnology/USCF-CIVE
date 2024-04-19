@@ -25,7 +25,7 @@
             <div class="row">
                 @if($members->isEmpty())
                 <div class="col">
-                    <p>No leaders available.</p>
+                    <p class="alert alert-info" role="alert">No leaders posted yet.</p>
                 </div>
                 @else
                 @foreach($members as $member)

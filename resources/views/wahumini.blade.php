@@ -68,6 +68,9 @@
                                             </div>
                                             <div class="modal-body">
                                                 <!-- User details -->
+                                                <div class="text-center">
+        <img src="{{ asset($user->profile) }}" alt="Profile Picture" class="img-fluid rounded-circle" style="max-width: 150px;">
+    </div>
                                                 <p><strong>Name:</strong> {{ $user->firstname }} {{ $user->middlename }} {{ $user->lastname }}</p>
                                                 <p><strong>Phone:</strong> {{ $user->phone }}</p>
                                                 <p><strong>First Year:</strong> {{ $user->year_started }}</p>
@@ -119,5 +122,18 @@
         });
     });
 </script>
+<style>
+    /* CSS */
+.modal-body .text-center img {
+    display: block;
+    margin: 0 auto; /* Center the image horizontally */
+}
 
+/* Adjust image size */
+.modal-body img {
+    max-width: 100%;
+    height: auto;
+}
+
+</style>
 @endsection

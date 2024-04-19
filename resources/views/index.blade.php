@@ -374,7 +374,7 @@
 
 
     <!-- ======= Frequently Asked Questions Section ======= -->
-    - <section id="faq" class="faq section-bg">
+    <section id="faq" class="faq section-bg">
     <div class="container">
         <div class="section-title">
             <h2>Verse of the Week</h2>
@@ -383,27 +383,34 @@
 
         <div class="faq-list">
             <ul>
-                @foreach($allNenoLaWeek as $verse)
-                <li data-aos="fade-up">
-                    <i class="bx bx-bible icon-bible"></i>
-                    <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-{{$verse->id}}">
-                        {{$verse->kichwa}} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
-                    </a>
-                    <div id="faq-list-{{$verse->id}}" class="collapse show" data-bs-parent=".faq-list">
-                        <p>
-                            {{$verse->kifungu}}
-                        </p>
-                        <p>
-                        {!! strip_tags($verse->maelezo) !!}
-                        </p>
-                        <p>Date posted: {{$verse->created_at}}</p>
-                    </div>
-                </li>
-                @endforeach
+                @if($allNenoLaWeek->isEmpty())
+                    <li>
+                        <p class="alert alert-info" role="alert">Sorry, there is no verse of the week posted for this week.</p>
+                    </li>
+                @else
+                    @foreach($allNenoLaWeek as $verse)
+                    <li data-aos="fade-up">
+                        <i class="bx bx-bible icon-bible"></i>
+                        <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-{{$verse->id}}">
+                            {{$verse->kichwa}} <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i>
+                        </a>
+                        <div id="faq-list-{{$verse->id}}" class="collapse show" data-bs-parent=".faq-list">
+                            <p>
+                                {{$verse->kifungu}}
+                            </p>
+                            <p>
+                            {!! strip_tags($verse->maelezo) !!}
+                            </p>
+                            <p>Date posted: {{$verse->created_at}}</p>
+                        </div>
+                    </li>
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>
 </section>
+
 
 <!-- End Frequently Asked Questions Section -->
 

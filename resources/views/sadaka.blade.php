@@ -6,7 +6,7 @@
   <h1>Dashboard</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="">Home</a></li>
       <li class="breadcrumb-item active">Sadaka</li>
     </ol>
   </nav>
@@ -73,7 +73,10 @@
         <label for="katikati_week" class="form-label">Sadaka ya katikati ya wiki</label>
         <input type="text" id="katikati_week" name="katikati_week" class="form-control">
     </div>
-  
+    <div class="col-md-12">
+    <label for="risiti" class="form-label">Risiti (PDF)</label>
+    <input type="file" id="risiti" name="risiti" class="form-control-file" accept="application/pdf" required>
+</div>
     <div class="text-center">
         <button type="submit" class="btn" style="background:#086808; color:#FFFFFF">Submit</button>
     </div>

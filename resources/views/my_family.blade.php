@@ -17,9 +17,9 @@
     <section class="section">
         <div class="card">
             <div class="card-body">
-                <h2><span class="animated-text">Family No:</span> {{ $family->id }}</h2>
                 @if ($hasFamily)
                     @if ($family)
+                        <h2><span class="animated-text">Family No:</span> {{ $family->id }}</h2>
                         <table class="table table-striped">
                             <thead>
                                 <tr>

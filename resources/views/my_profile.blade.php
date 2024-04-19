@@ -1,4 +1,4 @@
-@extends('layouts.main_admindashboard')
+@extends('layouts.main_memberdashboard')
 @section('content')
 <main id="main" class="main">
 
@@ -6,7 +6,7 @@
   <h1>Dashboard</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item"><a href="muumini_dashboard">Home</a></li>
       <li class="breadcrumb-item active">My profile</li>
     </ol>
   </nav>

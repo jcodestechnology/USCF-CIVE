@@ -29,6 +29,13 @@ Route::get('reports', function () {
     return view('reports');
 });
 
+Route::get('mapato_mengineyo', function () {
+    return view('mapato_mengineyo');
+});
+
+// In your routes file (e.g., web.php)
+Route::post('/store-kamati-mapato', [SadakaController::class, 'mapato_mengineyo'])->name('store.kamati-mapato');
+
 Route::post('/generate-report', [SadakaController::class, 'generateReport'])->name('generate.report');
 
 Route::get('/users/download-pdf', [RegistrationController::class, 'downloadPDF'])->name('users.download_pdf');
@@ -38,6 +45,9 @@ Route::get('/view_events', [RegistrationController::class, 'getEvents'])->name('
 Route::get('/leaders', [RegistrationController::class, 'getAllMembers'])->name('leaders');
 Route::get('/', [NenoLaWeekController::class, 'week'])->name('index');
 Route::get('ibada', [NenoLaWeekController::class, 'getPictures'])->name('ibada');
+
+Route::post('/contact', [NenoLaWeekController::class, 'contact_method'])->name('contact.method');
+
 // Route for storing user registration
 Route::post('/register', [RegistrationController::class, 'store'])->name('register');
 
@@ -53,8 +63,8 @@ Route::post('/members', [RegistrationController::class, 'storeM'])->name('member
 Route::get('leaderdashboard', function () {
     return view('leaderdashboard');
 });
-Route::get('dashboard', function () {
-    return view('dashboard');
+Route::get('muumini_dashboard', function () {
+    return view('muumini_dashboard');
 });
 Route::get('neno', function () {
     return view('neno');
@@ -64,6 +74,9 @@ Route::get('maoni', function () {
 });
 Route::get('post_neno', function () {
     return view('post_neno');
+});
+Route::get('my_profile', function () {
+    return view('my_profile');
 });
 
 
@@ -82,6 +95,9 @@ Route::get('ahadi_kapu', function () {
 Route::get('profile', function () {
     return view('profile');
 });
+
+Route::post('/profile/update', [AuthenticationController::class, 'update'])->name('profile.update');
+Route::post('/store-income', [SadakaController::class, 'mradi'])->name('store.income');
 Route::get('view_matoleo_yote', [SadakaController::class, 'retrieveAllSadaka'])->name('view_matoleo_yote');
 Route::post('/store-sadaka', [SadakaController::class, 'ahadiKapu'])->name('store.ahadiKapu');
 Route::get('view_my_ahadi', [SadakaController::class, 'retrieveMyAhadi'])->name('view_my_ahadi');
@@ -92,11 +108,14 @@ Route::post('/update-ahadi', [SadakaController::class, 'updateAhadi'])->name('up
 Route::post('/ahadi/store', [SadakaController::class, 'storeSadaka'])->name('ahadi.store');
 Route::get('/view_maoni', [NenoLaWeekController::class, 'index'])->name('view.maoni');
 Route::delete('/delete-maoni/{id}', [NenoLaWeekController::class, 'destroy'])->name('delete.maoni');
-Route::get('events', [RegistrationController::class, 'createEvent'])->name('events');
+// Route::get('events', [RegistrationController::class, 'createEvent'])->name('events');
 Route::post('/events', [RegistrationController::class, 'storeEvent'])->name('events.store');
 
 Route::get('kozi', function () {
     return view('kozi');
+});
+Route::get('events', function () {
+    return view('events');
 });
 
 Route::get('management', function () {
@@ -115,6 +134,9 @@ Route::get('mradi', function () {
 Route::get('matangazopage', function () {
     return view('matangazopage');
 });
+
+
+
 
 
 Route::put('/update/matangazo/{id}', [RegistrationController::class, 'update_matangazo'])->name('update.matangazo');

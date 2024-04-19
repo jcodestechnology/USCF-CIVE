@@ -7,7 +7,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="">Home</a></li>
-                <li class="breadcrumb-item active">Jaza Mapato ya Mradi</li>
+                <li class="breadcrumb-item active">Jaza Mapato ya Kamati mbali mbali</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -24,34 +24,36 @@
                     {{ session('error') }}
                 </div>
                 @endif
-                <h5 class="card-title">Mapato ya Mradi </h5>
+                <h5 class="card-title">Mapato ya Kamati </h5>
 
                 <!-- Modified Form with Required Fields -->
-                <form class="row g-3" action="{{ route('store.income') }}" method="post" enctype="multipart/form-data">
+                <form class="row g-3" action="{{ route('store.kamati-mapato') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <!-- Field for Tarehe -->
                     <div class="col-md-6">
                         <label for="tarehe" class="form-label">Tarehe</label>
                         <input type="date" id="tarehe" name="tarehe" class="form-control" value="{{ date('Y-m-d') }}" readonly required>
                     </div>
-                    <!-- Field for Jina la Mradi -->
+                    <!-- Field for Aina ya Mapato -->
                     <div class="col-md-6">
-                        <label for="jina_la_mradi" class="form-label">Jina la Mradi</label>
-                        <input type="text" id="jina_la_mradi" name="jina_la_mradi" class="form-control" required>
+                        <label for="aina_ya_mapato" class="form-label">Aina ya Mapato</label>
+                        <select id="aina_ya_mapato" name="aina_ya_mapato" class="form-control" required>
+                            <option value="Team Jesus">Team Jesus</option>
+                            <option value="Celestials">Celestials</option>
+                            <option value="Praise Team">Praise Team</option>
+                            <option value="Kamati ya wadada">Kamati ya wadada</option>
+                            <option value="Kamati ya Wanaume">Kamati ya Wanaume</option>
+                            <option value="Alama ya First Year">Alama ya First Year</option>
+                            <option value="Kwaya Kuu">Kwaya Kuu</option>
+                            <option value="Outreach">Outreach</option>
+                        </select>
                     </div>
-                    <!-- Field for Garama kwa bidhaa -->
+                    <!-- Field for Kiasi cha Mapato -->
                     <div class="col-md-6">
-                        <label for="gharama_kwa_bidhaa" class="form-label">Gharama kwa Bidhaa</label>
-                        <input type="number" id="gharama_kwa_bidhaa" name="gharama_kwa_bidhaa" class="form-control" required>
+                        <label for="kiasi_cha_mapato" class="form-label">Kiasi cha Mapato</label>
+                        <input type="number" id="kiasi_cha_mapato" name="kiasi_cha_mapato" class="form-control" required>
                     </div>
-                    <!-- Field for idadi ya bidhaa -->
-                    <div class="col-md-6">
-                        <label for="idadi_ya_bidhaa" class="form-label">Idadi ya Bidhaa</label>
-                        <input type="number" id="idadi_ya_bidhaa" name="idadi_ya_bidhaa" class="form-control" required>
-                    </div>
-                    <!-- Field for Kiasi (read-only, calculated using JavaScript) -->
-                
-                    <!-- Field for Risiti (PDF) -->
+                    <!-- Field for Risiti -->
                     <div class="col-md-6">
                         <label for="risiti" class="form-label">Risiti (PDF)</label>
                         <input type="file" id="risiti" name="risiti" class="form-control-file" accept="application/pdf" required>
@@ -69,14 +71,4 @@
     </section>
 
 </main><!-- End #main -->
-@endsection
-
-@section('scripts')
-<script>
-    // Set the current date for the "Tarehe" field
-    document.addEventListener("DOMContentLoaded", function() {
-        var currentDate = new Date().toISOString().split('T')[0];
-        document.getElementById("tarehe").value = currentDate;
-    });
-</script>
 @endsection

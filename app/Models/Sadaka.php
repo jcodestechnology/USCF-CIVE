@@ -18,6 +18,7 @@ class Sadaka extends Model
         'changizo',
         'sadaka_madhabahu',
         'katikati_week',
+        'risiti',
      
 
        

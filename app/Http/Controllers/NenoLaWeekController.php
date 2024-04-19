@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Models\Post;
 use App\Models\Maoni;
+use App\Models\Contact;
 
 class NenoLaWeekController extends Controller
 {
@@ -146,4 +147,25 @@ public function storeMaoni(Request $request)
         
         return redirect()->back()->with('success', 'Maoni deleted successfully.');
     }
+
+    public function contact_method(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+    
+       
+    
+        // Create a new instance of the Contact model and fill it with validated data
+        $contact = new Contact();
+        $contact->fill($validatedData);
+        $contact->save();
+    
+        return redirect()->back()->with('success', 'Your message has been sent. Thank you!');
+    }
+    
+    
 }

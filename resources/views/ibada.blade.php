@@ -37,7 +37,7 @@
                 @endforeach
             @else
                 <div class="col">
-                    <p>No images posted.</p>
+                    <p class="alert alert-info" role="alert">Sorry!, No Sunday images posted yet.</p>
                 </div>
             @endif
         </div>

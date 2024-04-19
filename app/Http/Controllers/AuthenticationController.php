@@ -28,9 +28,9 @@ class AuthenticationController extends Controller
             if ($user->status === 'Active') {
                 // Check user's role
                 if ($user->user_role === 'Member') {
-                    return redirect()->intended('dashboard')->with('success', 'Login successful.'); // Redirect to member dashboard
+                    return redirect()->intended('muumini_dashboard')->with('success', 'Welcome, ' . $user->firstname .' '. $user->middlename .' '. $user->lastname . ', you have logged in successfully!'); // Redirect to member dashboard
                 } else {
-                    return redirect()->intended('leaderdashboard')->with('success', 'Login successful.'); // Redirect to leader dashboard
+                    return redirect()->intended('leaderdashboard')->with('success', 'Welcome, ' . $user->firstname . ', you have logged in successfully!'); // Redirect to leader dashboard
                 }
             } else {
                 Auth::logout(); // Log out the user
@@ -72,5 +72,25 @@ class AuthenticationController extends Controller
         $user->save();
 
         return redirect()->back()->with('success', 'Password updated successfully!');
+    }
+
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->firstname = $request->input('firstname');
+        $user->middlename = $request->input('middlename');
+        $user->lastname = $request->input('lastname');
+    
+        // Upload and update profile picture if provided
+        if ($request->hasFile('profile_image')) {
+            $image = $request->file('profile_image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('profile_images'), $imageName);
+            $user->profile = '/profile_images/' . $imageName;
+        }
+    
+        $user->save();
+    
+        return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 }

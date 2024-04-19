@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Taarifa ya Mapato ya Sadaka ya USCF CIVE</title>
+    <title>TAARIFA YA MAPATO YA KANISA</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -46,16 +46,37 @@
         .total-row {
             font-weight: bold;
         }
+        .receipts {
+            margin-top: 20px;
+        }
+        .receipts h2 {
+            margin-bottom: 10px;
+        }
+        .receipts ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .receipts ul li {
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        {{-- Section A: Committee Income --}}
         <div class="header">
             <h1>CCT-UNIVERSITY STUDENT CHRISTIAN FELLOWSHIP</h1>
             <p>USCF-College of Informatics and Virtual Education (CIVE)</p>
-            <h2>Taarifa ya mapato ya sadaka za kanisa</h2>
+            <h2>TAARIFA YA MAPATO YA KANISA</h2>
             <p>Kuanzia Tarehe: {{ date('d/m/Y', strtotime($startDate)) }} - {{ date('d/m/Y', strtotime($endDate)) }}</p>
             <hr>
+        </div>
+
+        {{-- Section B: Sadaka za Kanisa --}}
+        <div class="header">
+            <h2>A: MAPATO YA SADAKA ZA KANISA</h2>
+           
         </div>
         <table>
             <thead>
@@ -75,7 +96,17 @@
             </thead>
             <tbody>
                 @php
-                    $totalOfferings = [];
+                    $totalOfferings = [
+                        'sadaka_jumapili' => 0,
+                        'chaplaincy' => 0,
+                        'uscfcive' => 0,
+                        'kumtunza_mchungaji' => 0,
+                        'mnada' => 0,
+                        'shukrani_ya_pekee' => 0,
+                        'changizo' => 0,
+                        'madhabahu' => 0,
+                        'katikati_week' => 0,
+                    ];
                 @endphp
                 @foreach($income as $incomeItem)
                     <tr>
@@ -92,31 +123,132 @@
                         <td>{{ $incomeItem->sadaka_jumapili != 0 ? number_format($incomeItem->sadaka_jumapili * 0.3 + $incomeItem->kumtunza_mchungaji + $incomeItem->mnada + $incomeItem->shukrani_ya_pekee + $incomeItem->changizo + $incomeItem->sadaka_madhabahu + $incomeItem->katikati_week) : '-' }}</td>
                     </tr>
                     @php
-                        // Store the total offering for each type
-                        $totalOfferings['sadaka_jumapili'] = ($totalOfferings['sadaka_jumapili'] ?? 0) + $incomeItem->sadaka_jumapili;
-                        $totalOfferings['kumtunza_mchungaji'] = ($totalOfferings['kumtunza_mchungaji'] ?? 0) + $incomeItem->kumtunza_mchungaji;
-                        $totalOfferings['mnada'] = ($totalOfferings['mnada'] ?? 0) + $incomeItem->mnada;
-                        $totalOfferings['shukrani_ya_pekee'] = ($totalOfferings['shukrani_ya_pekee'] ?? 0) + $incomeItem->shukrani_ya_pekee;
-                        $totalOfferings['changizo'] = ($totalOfferings['changizo'] ?? 0) + $incomeItem->changizo;
-                        $totalOfferings['sadaka_madhabahu'] = ($totalOfferings['sadaka_madhabahu'] ?? 0) + $incomeItem->sadaka_madhabahu;
-                        $totalOfferings['katikati_week'] = ($totalOfferings['katikati_week'] ?? 0) + $incomeItem->katikati_week;
+                        // Update total offerings
+                        $totalOfferings['sadaka_jumapili'] += $incomeItem->sadaka_jumapili;
+                        $totalOfferings['chaplaincy'] += $incomeItem->sadaka_jumapili * 0.7;
+                        $totalOfferings['uscfcive'] += $incomeItem->sadaka_jumapili * 0.3;
+                        $totalOfferings['kumtunza_mchungaji'] += $incomeItem->kumtunza_mchungaji;
+                        $totalOfferings['mnada'] += $incomeItem->mnada;
+                        $totalOfferings['shukrani_ya_pekee'] += $incomeItem->shukrani_ya_pekee;
+                        $totalOfferings['changizo'] += $incomeItem->changizo;
+                        $totalOfferings['madhabahu'] += $incomeItem->sadaka_madhabahu;
+                        $totalOfferings['katikati_week'] += $incomeItem->katikati_week;
                     @endphp
                 @endforeach
                 <tr class="total-row">
                     <td>Jumla</td>
-                    <td>{{ number_format($totalOfferings['sadaka_jumapili'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['sadaka_jumapili'] * 0.7) }}</td>
-                    <td>{{ number_format($totalOfferings['sadaka_jumapili'] * 0.3) }}</td>
-                    <td>{{ number_format($totalOfferings['kumtunza_mchungaji'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['mnada'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['shukrani_ya_pekee'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['changizo'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['sadaka_madhabahu'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['katikati_week'] ?? 0) }}</td>
-                    <td>{{ number_format($totalOfferings['sadaka_jumapili'] * 0.3 + ($totalOfferings['kumtunza_mchungaji'] ?? 0) + ($totalOfferings['mnada'] ?? 0) + ($totalOfferings['shukrani_ya_pekee'] ?? 0) + ($totalOfferings['changizo'] ?? 0) + ($totalOfferings['sadaka_madhabahu'] ?? 0) + ($totalOfferings['katikati_week'] ?? 0)) }}</td>
+                    <td>{{ number_format($totalOfferings['sadaka_jumapili']) }}</td>
+                    <td>{{ number_format($totalOfferings['chaplaincy']) }}</td>
+                    <td>{{ number_format($totalOfferings['uscfcive']) }}</td>
+                    <td>{{ number_format($totalOfferings['kumtunza_mchungaji']) }}</td>
+                    <td>{{ number_format($totalOfferings['mnada']) }}</td>
+                    <td>{{ number_format($totalOfferings['shukrani_ya_pekee']) }}</td>
+                    <td>{{ number_format($totalOfferings['changizo']) }}</td>
+                    <td>{{ number_format($totalOfferings['madhabahu']) }}</td>
+                    <td>{{ number_format($totalOfferings['katikati_week']) }}</td>
+                    <td>{{ number_format(array_sum($totalOfferings)) }}</td>
                 </tr>
             </tbody>
         </table>
+
+        {{-- Section C: Committee Income --}}
+<div class="header">
+    <h2>B: MAPATO YA KAMATI MBALIMBALI</h2>
+</div>
+@php
+    $totalCommitteeIncome = 0; // Initialize the variable here
+@endphp
+@foreach($committeeIncome as $committee => $income)
+    @php
+        $committeeTotalIncome = 0;
+    @endphp
+    <h3>{{ $committee }}</h3>
+    <table>
+        <!-- Committee Income table content -->
+        @foreach($income as $item)
+            <tr>
+                <td>{{ date('d/m/Y', strtotime($item->tarehe)) }}</td>
+                <td>{{ number_format($item->kiasi_cha_mapato) }}</td>
+            </tr>
+            @php
+                $committeeTotalIncome += $item->kiasi_cha_mapato;
+            @endphp
+        @endforeach
+        <!-- Add total row for each committee -->
+        <tr class="total-row">
+            <td>Jumla</td>
+            <td>{{ number_format($committeeTotalIncome) }}</td>
+        </tr>
+    </table>
+    @php
+        $totalCommitteeIncome += $committeeTotalIncome;
+    @endphp
+@endforeach
+        {{-- Section D: Project Income --}}
+        <div class="header">
+            <h2>C: MAPATO YA KAMATI YA MIRADI</h2>
+          
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tarehe</th>
+                    <th>Jina la Mradi</th>
+                    <th>Gharama kwa bidhaa</th>
+                    <th>Idadi ya bidhaa</th>
+                    <th>Jumla ya Fedha</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                    $totalProjectIncome = 0;
+                @endphp
+                @foreach($projectIncome as $item)
+                    <tr>
+                        <td>{{ date('d/m/Y', strtotime($item->date)) }}</td>
+                        <td>{{ $item->project_name }}</td>
+                        <td>{{ number_format($item->cost_per_item) }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>{{ number_format($item->total_cost) }}</td>
+                    </tr>
+                    @php
+                        $totalProjectIncome += $item->total_cost;
+                    @endphp
+                @endforeach
+                <tr class="total-row">
+                    <td>Jumla</td>
+                    <td colspan="4">{{ number_format($totalProjectIncome) }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+      
+    
+        {{-- Section E: Overall Totals --}}
+<div class="header">
+    <h2>D: JUMLA YA MAKUSANYO</h2>
+    <table>
+        <!-- Overall Totals table content -->
+        <tr>
+            <td>Jumla ya Mapato ya Sadaka za Kanisa:</td>
+            <td>{{ number_format(array_sum($totalOfferings)) }}</td>
+        </tr>
+        <tr>
+            <td>Jumla ya Mapato ya Kamati Mbalimbali:</td>
+            <td>{{ number_format($totalCommitteeIncome) }}</td>
+        </tr>
+        <tr>
+            <td>Jumla ya Mapato ya Kamati ya Miradi:</td>
+            <td>{{ number_format($totalProjectIncome) }}</td>
+        </tr>
+        <tr class="total-row">
+            <td>Jumla ya Mapato ya Taarifa Nzima:</td>
+            <td>{{ number_format(array_sum($totalOfferings) + $totalCommitteeIncome + $totalProjectIncome) }}</td>
+        </tr>
+    </table>
+</div>
+
+
     </div>
 </body>
 </html>
